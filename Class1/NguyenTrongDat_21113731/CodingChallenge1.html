@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NguyenTrongDat_21113731</title>
+    <script>
+        const john = {
+            mass: 92,
+            height: 1.95,
+            calcBMI: function(){
+                this.BMI = (this.mass / (this.height * this.height)).toFixed(1);
+                return this.BMI;
+            }
+        }
+        const mark = {
+            mass: 78,
+            height: 1.69,
+            calcBMI: function(){
+                this.BMI = (this.mass / (this.height * this.height)).toFixed(1);
+                return this.BMI;
+            }
+        }
+        const markHeigherBMI = mark.calcBMI() > john.calcBMI();
+        function compareBMI(condition){
+            if(condition){
+                console.log(`Mark's BMI (${mark.BMI}) is higher than John's BMI (${john.BMI})`);
+            }else{
+                console.log(`John's BMI (${john.BMI}) is higher than Mark's BMI (${mark.BMI})`);
+            }
+        }
+        compareBMI(markHeigherBMI);
+        mark.mass = 95;
+        mark.height = 1.88;
+        john.mass = 85;
+        john.height = 1.76;
+        const markHeigherBMI2 = mark.calcBMI() > john.calcBMI();
+        compareBMI(markHeigherBMI2);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

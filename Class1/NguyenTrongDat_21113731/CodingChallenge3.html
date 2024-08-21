@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NguyenTrongDat_21113731</title>
+    <script>
+        const dolpins = [96, 108, 89];
+        const koalas = [88, 91, 110];
+        function calculateWinner(dolpins, koalas,bonus){
+            const dolpinsAverage = dolpins.reduce((avg,i) => avg + i ,0) / dolpins.length;
+            const koalasAverage = koalas.reduce((avg,i) => avg + i, 0) / koalas.length;
+            const minScoreElement = dolpins.every(i => i > 100) || koalas.every(i => i > 100);
+            if(dolpinsAverage > koalasAverage ){
+                if(bonus){
+                    if(minScoreElement){
+                        console.log(`Dolpins win (${dolpinsAverage} vs ${koalasAverage})`);
+                    }else{
+                    console.log('No team wins the trophy');
+                    }
+                }else{
+                    console.log(`Dolpins win (${dolpinsAverage} vs ${koalasAverage})`);
+                }
+            }else if(dolpinsAverage < koalasAverage){
+                if(bonus){
+                    if(minScoreElement){
+                        console.log(`Koalas win (${koalasAverage} vs ${dolpinsAverage})`);
+                    }else{
+                        console.log('No team wins the trophy');
+                    }
+                }else{
+                console.log(`Koalas win (${koalasAverage} vs ${dolpinsAverage})`);
+                }        
+            }else if(dolpinsAverage === koalasAverage){
+                if(bonus){
+                    if(minScoreElement){
+                        console.log(`Draw (${dolpinsAverage} vs ${koalasAverage})`);
+                    }else{
+                        console.log('No team wins the trophy');
+                    }
+                }else{
+                console.log(`Draw (${dolpinsAverage} vs ${koalasAverage})`);
+                }
+            }
+        }
+        calculateWinner(dolpins, koalas,false);
+        dolpins2 = [97, 112, 101];
+        koalas2 = [109, 95, 123];
+        calculateWinner(dolpins2, koalas2,true);
+        dolpins3 = [97, 112, 101];
+        koalas3 = [109, 95, 106];
+        calculateWinner(dolpins3, koalas3,true);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

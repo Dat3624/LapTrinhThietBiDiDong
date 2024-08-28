@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        Array.prototype.myFilter = function (callback){
+            var newArr = []
+            for(let i = 0;i<this.length;i++){
+                if(callback(this[i],i,this)){
+                    newArr.push(this[i])
+                }
+            }
+            return newArr
+        }
+        const arr = [1,2,3,4,5,6,7,8,9,10]
+        const arrNew = arr.myFilter((item) => item >3)
+        console.log('MyFilter '+ arrNew)
+        Array.prototype.myMap = function(callback){
+            var newArr = []
+            for(let i = 0;i<this.length;i ++){
+                newArr.push(callback(this[i],i,this))
+            }
+            return newArr
+        }
+        const arr2 = [1,2,3,4,5,6,7,8,9,10]
+        const arrNew2 = arr2.myMap((item) => item * 2)
+        console.log('MyMap '+ arrNew2)
+        Array.prototype.myReduce = function(callback,initialValue){
+            var accumulator = initialValue === undefined ? 0 : initialValue
+            for(let i = 0;i<this.length;i++){
+                if(accumulator !== 0){
+                    accumulator = callback(accumulator,this[i],i,this)
+                }else{
+                    accumulator = this[i]
+                }
+            }
+            return accumulator
+        }
+        arr3 = [1,2,3,4,5]
+        const arrNew3 = arr3.myReduce((acc,item) => acc + item,2)
+        console.log('MyReduce '+ arrNew3)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-const API_URL = 'https://67180ab4b910c6a6e02aefed.mockapi.io/api/gk';
+const API_URL = 'https://67180ab4b910c6a6e02aefed.mockapi.io/api/gk/jobs';
 function* fecthJobs(){
   try {
     const response = yield call(axios.get, API_URL);

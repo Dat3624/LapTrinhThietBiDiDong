@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 export default function TodoApp(){
   const dispatch = useDispatch();
   const { jobs, loading, error } = useSelector(state => state.jobs);
-  const [newJob, setNewJob] = useState({ title: '', body: '' });
+  const [newJob, setNewJob] = useState({ id: '', name: '' });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_JOBS_REQUEST' });
@@ -12,7 +12,7 @@ export default function TodoApp(){
 
   const handleCreateJob = () => {
     dispatch({ type: 'CREATE_JOB_REQUEST', payload: newJob });
-    setNewJob({ title: '', body: '' });
+    setNewJob({ id: '', name: '' });
   };
 
   const handleDeleteJob = (id) => {
@@ -22,8 +22,8 @@ export default function TodoApp(){
   return(
     <SafeAreaView style={{flex:1}}>
     <Text style={{backgroundColor:'blue',color:'white',fontSize:25,fontWeight:'bold',textAlign:'center'}}>To do App</Text>
-    <TextInput style={{height:30,borderWidth:1,borderRadius:7,marginHorizontal:30,marginVertical:10,color:'gray'}} value='text todo' ></TextInput>
-    <Button title='ADD' onPress={handleCreateJob}></Button>
+    
+    
     <View>
       {loading && <Text>Loading...</Text>}
       {error && <Text>{error}</Text>}
@@ -32,21 +32,23 @@ export default function TodoApp(){
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View>
-            <Text>{item.title}</Text>
+            <Text>{item.name}</Text>
             <Button title="Delete" onPress={() => handleDeleteJob(item.id)} />
           </View>
         )}
       />
-      <TextInput
-        placeholder="Title"
-        value={newJob.title}
-        onChangeText={(text) => setNewJob({ ...newJob, title: text })}
+      <TextInput style={{height:30,borderWidth:1,borderRadius:7,marginHorizontal:30,marginVertical:10,color:'gray'}}
+        placeholder="id"
+        value={newJob.id}
+        onChangeText={(text) => setNewJob({ ...newJob, id: text })}
       />
       <TextInput
-        placeholder="Body"
-        value={newJob.body}
-        onChangeText={(text) => setNewJob({ ...newJob, body: text })}
+      style={{height:30,borderWidth:1,borderRadius:7,marginHorizontal:30,marginVertical:10,color:'gray'}}
+        placeholder="name"
+        value={newJob.name}
+        onChangeText={(text) => setNewJob({ ...newJob, name: text })}
       />
+      <Button title='ADD' onPress={handleCreateJob}></Button>
 
     </View>
     </SafeAreaView>
